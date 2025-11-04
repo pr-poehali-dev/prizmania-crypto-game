@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Slider } from '@/components/ui/slider';
+import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 
@@ -11,7 +13,22 @@ const Index = () => {
   const [walletDialogOpen, setWalletDialogOpen] = useState(false);
   const [walletConnected, setWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
+  const [calcAmount, setCalcAmount] = useState(1000);
+  const [calcDays, setCalcDays] = useState(30);
   const { toast } = useToast();
+
+  const calculateReward = (amount: number, days: number) => {
+    const yearlyRate = 0.12;
+    const dailyRate = yearlyRate / 365;
+    const reward = amount * dailyRate * days;
+    return {
+      total: amount + reward,
+      profit: reward,
+      guaranteed: amount
+    };
+  };
+
+  const reward = calculateReward(calcAmount, calcDays);
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
@@ -260,39 +277,89 @@ const Index = () => {
             </Card>
 
             <Card className="p-8 bg-card/50 backdrop-blur-sm border-secondary/30">
-              <div className="mb-6 text-center">
-                <h3 className="text-2xl font-bold mb-2 glow-cyan">Пример расчёта наград</h3>
-                <p className="text-muted-foreground">Прозрачная формула распределения вознаграждений</p>
+              <div className="mb-8 text-center">
+                <h3 className="text-2xl font-bold mb-2 glow-cyan">Калькулятор наград</h3>
+                <p className="text-muted-foreground">Рассчитайте свою прибыль в режиме реального времени</p>
               </div>
               
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 rounded-lg bg-primary/10 border border-primary/20">
-                      <span className="text-muted-foreground">Ваш вклад</span>
-                      <span className="text-xl font-bold text-primary">1000 PZM</span>
+              <div className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-6">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-medium text-muted-foreground">Сумма вклада (PZM)</label>
+                        <Input 
+                          type="number" 
+                          value={calcAmount} 
+                          onChange={(e) => setCalcAmount(Math.max(100, parseInt(e.target.value) || 100))}
+                          className="w-32 text-right"
+                          min="100"
+                        />
+                      </div>
+                      <Slider 
+                        value={[calcAmount]} 
+                        onValueChange={(value) => setCalcAmount(value[0])}
+                        min={100}
+                        max={100000}
+                        step={100}
+                        className="w-full"
+                      />
+                      <div className="flex justify-between text-xs text-muted-foreground">
+                        <span>100 PZM</span>
+                        <span>100,000 PZM</span>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/10 border border-secondary/20">
-                      <span className="text-muted-foreground">Время участия</span>
-                      <span className="text-xl font-bold text-secondary">30 дней</span>
+
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-medium text-muted-foreground">Период (дней)</label>
+                        <Input 
+                          type="number" 
+                          value={calcDays} 
+                          onChange={(e) => setCalcDays(Math.max(1, parseInt(e.target.value) || 1))}
+                          className="w-32 text-right"
+                          min="1"
+                        />
+                      </div>
+                      <Slider 
+                        value={[calcDays]} 
+                        onValueChange={(value) => setCalcDays(value[0])}
+                        min={1}
+                        max={365}
+                        step={1}
+                        className="w-full"
+                      />
+                      <div className="flex justify-between text-xs text-muted-foreground">
+                        <span>1 день</span>
+                        <span>365 дней</span>
+                      </div>
                     </div>
+
                     <div className="flex items-center justify-between p-4 rounded-lg bg-accent/10 border border-accent/20">
-                      <span className="text-muted-foreground">Базовый %</span>
+                      <span className="text-muted-foreground">Базовая ставка</span>
                       <span className="text-xl font-bold text-accent">12% годовых</span>
                     </div>
                   </div>
                   
                   <div className="flex flex-col justify-center">
-                    <div className="p-6 rounded-xl bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 border-2 border-primary/40 text-center">
-                      <div className="text-sm text-muted-foreground mb-2">Ваша награда через 30 дней</div>
-                      <div className="text-4xl font-bold glow-purple mb-2">1010 PZM</div>
-                      <div className="text-green-500 font-semibold flex items-center justify-center gap-1">
-                        <Icon name="TrendingUp" size={16} />
-                        +10 PZM прибыль
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 border-2 border-primary/40 text-center space-y-4 animate-fade-in">
+                      <div>
+                        <div className="text-sm text-muted-foreground mb-2">Ваша награда через {calcDays} {calcDays === 1 ? 'день' : calcDays < 5 ? 'дня' : 'дней'}</div>
+                        <div className="text-4xl md:text-5xl font-bold glow-purple mb-2">{reward.total.toFixed(2)} PZM</div>
                       </div>
-                      <div className="mt-4 pt-4 border-t border-primary/20">
-                        <div className="text-xs text-muted-foreground">Минимальная гарантированная выплата</div>
-                        <div className="text-lg font-bold text-primary mt-1">1000 PZM</div>
+                      
+                      <div className="text-green-500 font-semibold flex items-center justify-center gap-2 text-lg">
+                        <Icon name="TrendingUp" size={20} />
+                        +{reward.profit.toFixed(2)} PZM прибыль
+                      </div>
+                      
+                      <div className="pt-4 border-t border-primary/20">
+                        <div className="text-xs text-muted-foreground mb-1">Гарантированный минимум</div>
+                        <div className="text-2xl font-bold text-primary">{reward.guaranteed.toFixed(2)} PZM</div>
+                        <div className="text-xs text-green-500 mt-1 flex items-center justify-center gap-1">
+                          <Icon name="ShieldCheck" size={12} />
+                          100% защита вклада
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -300,29 +367,29 @@ const Index = () => {
 
                 <div className="p-4 rounded-lg bg-card/80 border border-border">
                   <div className="flex items-start gap-3">
-                    <Icon name="Info" className="text-primary flex-shrink-0 mt-1" size={20} />
+                    <Icon name="Calculator" className="text-primary flex-shrink-0 mt-1" size={20} />
                     <div className="text-sm text-muted-foreground">
-                      <span className="font-semibold text-foreground">Гарантия возврата:</span> В любой момент вы можете вывести свой вклад обратно в кошелёк. Математическая модель исключает потери — минимум вы получите 100% вложенной суммы, максимум — вклад + накопленные награды.
+                      <span className="font-semibold text-foreground">Формула расчёта:</span> Доход = Вклад × (12% / 365) × Количество дней. Ваш вклад остаётся защищённым — вы можете вывести его в любой момент вместе с накопленными наградами.
                     </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20 hover:bg-primary/10 transition-colors cursor-pointer" onClick={() => setCalcDays(7)}>
                     <div className="text-xs text-muted-foreground mb-1">За 7 дней</div>
-                    <div className="font-bold text-primary">+2.3 PZM</div>
+                    <div className="font-bold text-primary">+{(calcAmount * 0.12 / 365 * 7).toFixed(2)} PZM</div>
                   </div>
-                  <div className="p-3 rounded-lg bg-secondary/5 border border-secondary/20">
+                  <div className="p-3 rounded-lg bg-secondary/5 border border-secondary/20 hover:bg-secondary/10 transition-colors cursor-pointer" onClick={() => setCalcDays(30)}>
                     <div className="text-xs text-muted-foreground mb-1">За 30 дней</div>
-                    <div className="font-bold text-secondary">+10 PZM</div>
+                    <div className="font-bold text-secondary">+{(calcAmount * 0.12 / 365 * 30).toFixed(2)} PZM</div>
                   </div>
-                  <div className="p-3 rounded-lg bg-accent/5 border border-accent/20">
+                  <div className="p-3 rounded-lg bg-accent/5 border border-accent/20 hover:bg-accent/10 transition-colors cursor-pointer" onClick={() => setCalcDays(90)}>
                     <div className="text-xs text-muted-foreground mb-1">За 90 дней</div>
-                    <div className="font-bold text-accent">+30 PZM</div>
+                    <div className="font-bold text-accent">+{(calcAmount * 0.12 / 365 * 90).toFixed(2)} PZM</div>
                   </div>
-                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20 hover:bg-primary/10 transition-colors cursor-pointer" onClick={() => setCalcDays(365)}>
                     <div className="text-xs text-muted-foreground mb-1">За 365 дней</div>
-                    <div className="font-bold text-primary">+120 PZM</div>
+                    <div className="font-bold text-primary">+{(calcAmount * 0.12).toFixed(2)} PZM</div>
                   </div>
                 </div>
               </div>
