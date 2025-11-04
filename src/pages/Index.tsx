@@ -241,7 +241,7 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 glow-orange">Математическая механика наград</h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">Точные расчёты делают проигрыш невозможным</p>
           
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto space-y-8">
             <Card className="p-8 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 border-primary/30 neon-border">
               <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div className="space-y-2 animate-fade-in">
@@ -255,6 +255,75 @@ const Index = () => {
                 <div className="space-y-2 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                   <div className="text-5xl font-bold glow-orange">∞</div>
                   <div className="text-muted-foreground">Потенциал роста</div>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 bg-card/50 backdrop-blur-sm border-secondary/30">
+              <div className="mb-6 text-center">
+                <h3 className="text-2xl font-bold mb-2 glow-cyan">Пример расчёта наград</h3>
+                <p className="text-muted-foreground">Прозрачная формула распределения вознаграждений</p>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between p-4 rounded-lg bg-primary/10 border border-primary/20">
+                      <span className="text-muted-foreground">Ваш вклад</span>
+                      <span className="text-xl font-bold text-primary">1000 PZM</span>
+                    </div>
+                    <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/10 border border-secondary/20">
+                      <span className="text-muted-foreground">Время участия</span>
+                      <span className="text-xl font-bold text-secondary">30 дней</span>
+                    </div>
+                    <div className="flex items-center justify-between p-4 rounded-lg bg-accent/10 border border-accent/20">
+                      <span className="text-muted-foreground">Базовый %</span>
+                      <span className="text-xl font-bold text-accent">12% годовых</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col justify-center">
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 border-2 border-primary/40 text-center">
+                      <div className="text-sm text-muted-foreground mb-2">Ваша награда через 30 дней</div>
+                      <div className="text-4xl font-bold glow-purple mb-2">1010 PZM</div>
+                      <div className="text-green-500 font-semibold flex items-center justify-center gap-1">
+                        <Icon name="TrendingUp" size={16} />
+                        +10 PZM прибыль
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-primary/20">
+                        <div className="text-xs text-muted-foreground">Минимальная гарантированная выплата</div>
+                        <div className="text-lg font-bold text-primary mt-1">1000 PZM</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-lg bg-card/80 border border-border">
+                  <div className="flex items-start gap-3">
+                    <Icon name="Info" className="text-primary flex-shrink-0 mt-1" size={20} />
+                    <div className="text-sm text-muted-foreground">
+                      <span className="font-semibold text-foreground">Гарантия возврата:</span> В любой момент вы можете вывести свой вклад обратно в кошелёк. Математическая модель исключает потери — минимум вы получите 100% вложенной суммы, максимум — вклад + накопленные награды.
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+                    <div className="text-xs text-muted-foreground mb-1">За 7 дней</div>
+                    <div className="font-bold text-primary">+2.3 PZM</div>
+                  </div>
+                  <div className="p-3 rounded-lg bg-secondary/5 border border-secondary/20">
+                    <div className="text-xs text-muted-foreground mb-1">За 30 дней</div>
+                    <div className="font-bold text-secondary">+10 PZM</div>
+                  </div>
+                  <div className="p-3 rounded-lg bg-accent/5 border border-accent/20">
+                    <div className="text-xs text-muted-foreground mb-1">За 90 дней</div>
+                    <div className="font-bold text-accent">+30 PZM</div>
+                  </div>
+                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+                    <div className="text-xs text-muted-foreground mb-1">За 365 дней</div>
+                    <div className="font-bold text-primary">+120 PZM</div>
+                  </div>
                 </div>
               </div>
             </Card>
