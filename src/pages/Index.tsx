@@ -2,14 +2,49 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [walletDialogOpen, setWalletDialogOpen] = useState(false);
+  const [walletConnected, setWalletConnected] = useState(false);
+  const [walletAddress, setWalletAddress] = useState('');
+  const { toast } = useToast();
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const connectWallet = async (walletType: string) => {
+    try {
+      const mockAddress = `0x${Math.random().toString(16).substr(2, 40)}`;
+      setWalletAddress(mockAddress);
+      setWalletConnected(true);
+      setWalletDialogOpen(false);
+      
+      toast({
+        title: 'Кошелёк подключен!',
+        description: `${walletType} успешно подключен. Адрес: ${mockAddress.slice(0, 6)}...${mockAddress.slice(-4)}`,
+      });
+    } catch (error) {
+      toast({
+        title: 'Ошибка подключения',
+        description: 'Не удалось подключить кошелёк. Попробуйте снова.',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const disconnectWallet = () => {
+    setWalletConnected(false);
+    setWalletAddress('');
+    toast({
+      title: 'Кошелёк отключен',
+      description: 'Вы успешно отключили криптокошелёк',
+    });
   };
 
   return (
@@ -37,9 +72,23 @@ const Index = () => {
                 </button>
               ))}
             </div>
-            <Button className="neon-border bg-primary hover:bg-primary/80">
-              Подключить кошелёк
-            </Button>
+            {walletConnected ? (
+              <div className="flex items-center gap-3">
+                <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/20 border border-primary/30">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                  <span className="text-sm font-mono">{walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}</span>
+                </div>
+                <Button size="sm" variant="outline" onClick={disconnectWallet} className="border-primary/30">
+                  <Icon name="LogOut" size={16} className="mr-2" />
+                  Отключить
+                </Button>
+              </div>
+            ) : (
+              <Button className="neon-border bg-primary hover:bg-primary/80" onClick={() => setWalletDialogOpen(true)}>
+                <Icon name="Wallet" size={18} className="mr-2" />
+                Подключить кошелёк
+              </Button>
+            )}
           </div>
         </div>
       </nav>
@@ -64,9 +113,14 @@ const Index = () => {
                 Инновационная крипто-игра, где невозможно проиграть. Объединение криптокошелька с математической механикой выплаты наград.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="neon-border bg-primary hover:bg-primary/80 text-lg px-8">
+                <Button 
+                  size="lg" 
+                  className="neon-border bg-primary hover:bg-primary/80 text-lg px-8"
+                  onClick={() => walletConnected ? null : setWalletDialogOpen(true)}
+                  disabled={!walletConnected}
+                >
                   <Icon name="Wallet" className="mr-2" size={20} />
-                  Начать играть
+                  {walletConnected ? 'Начать играть' : 'Подключите кошелёк'}
                 </Button>
                 <Button size="lg" variant="outline" className="border-secondary text-secondary hover:bg-secondary/10 text-lg px-8">
                   <Icon name="PlayCircle" className="mr-2" size={20} />
@@ -321,6 +375,81 @@ const Index = () => {
           <p>© 2024 Prizmania. Все права защищены. Единственная криптовалюта, зарегистрированная в Роспатенте РФ.</p>
         </div>
       </footer>
+
+      <Dialog open={walletDialogOpen} onOpenChange={setWalletDialogOpen}>
+        <DialogContent className="sm:max-w-md bg-card border-primary/30">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold glow-purple">Подключить кошелёк</DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              Выберите кошелёк для подключения к Призмании
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <Button
+              onClick={() => connectWallet('MetaMask')}
+              className="w-full justify-start gap-4 h-16 bg-card hover:bg-primary/10 border border-border hover:border-primary/50 transition-all"
+              variant="outline"
+            >
+              <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
+                <Icon name="Wallet" size={24} className="text-orange-500" />
+              </div>
+              <div className="text-left">
+                <div className="font-semibold text-base">MetaMask</div>
+                <div className="text-xs text-muted-foreground">Популярный кошелёк для Web3</div>
+              </div>
+            </Button>
+
+            <Button
+              onClick={() => connectWallet('Trust Wallet')}
+              className="w-full justify-start gap-4 h-16 bg-card hover:bg-secondary/10 border border-border hover:border-secondary/50 transition-all"
+              variant="outline"
+            >
+              <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <Icon name="Shield" size={24} className="text-blue-500" />
+              </div>
+              <div className="text-left">
+                <div className="font-semibold text-base">Trust Wallet</div>
+                <div className="text-xs text-muted-foreground">Безопасный мобильный кошелёк</div>
+              </div>
+            </Button>
+
+            <Button
+              onClick={() => connectWallet('WalletConnect')}
+              className="w-full justify-start gap-4 h-16 bg-card hover:bg-accent/10 border border-border hover:border-accent/50 transition-all"
+              variant="outline"
+            >
+              <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                <Icon name="Link" size={24} className="text-cyan-500" />
+              </div>
+              <div className="text-left">
+                <div className="font-semibold text-base">WalletConnect</div>
+                <div className="text-xs text-muted-foreground">Подключение через QR-код</div>
+              </div>
+            </Button>
+
+            <Button
+              onClick={() => connectWallet('Prizm Wallet')}
+              className="w-full justify-start gap-4 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 border border-primary/50 neon-border transition-all"
+              variant="outline"
+            >
+              <div className="w-10 h-10 rounded-full bg-primary/30 flex items-center justify-center">
+                <img 
+                  src="https://cdn.poehali.dev/files/fcc3ce6e-7b1d-43e7-98f2-81cd0e45d3f0.png" 
+                  alt="Prizm" 
+                  className="w-8 h-8"
+                />
+              </div>
+              <div className="text-left">
+                <div className="font-semibold text-base glow-purple">Prizm Wallet</div>
+                <div className="text-xs text-muted-foreground">Официальный кошелёк Prizm</div>
+              </div>
+            </Button>
+          </div>
+          <div className="text-xs text-center text-muted-foreground mt-2">
+            Подключая кошелёк, вы соглашаетесь с условиями использования
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
