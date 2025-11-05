@@ -382,14 +382,11 @@ const Index = () => {
 
                     <div className="flex items-center justify-between p-4 rounded-lg bg-accent/10 border border-accent/20">
                       <span className="text-muted-foreground">Базовая ставка</span>
-                      <span className="text-xl font-bold text-accent">12% годовых</span>
+                      <span className="text-xl font-bold text-accent">от 300% годовых</span>
                     </div>
                   </div>
                   
-                  <div className="flex flex-col justify-center">
-                    <div className="p-6 rounded-xl bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 border-2 border-primary/40 text-center space-y-4 animate-fade-in">
-                      <div>
-                        <div className="text-sm text-muted-foreground mb-2">Ваша награда через {calcDays} {calcDays === 1 ? 'день' : calcDays < 5 ? 'дня' : 'дней'}</div>
+                  <div className="flex flex-col justify-center">40$</div>
                         <div className="text-4xl md:text-5xl font-bold glow-purple mb-2">${reward.reward}</div>
                       </div>
                       
