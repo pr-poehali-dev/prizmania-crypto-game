@@ -73,7 +73,7 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/740117d8-7e9c-4d11-88c4-0dbe433fc586.jpeg" 
                 alt="Prizm Logo" 
-                className="w-12 h-12 animate-glow-pulse"
+                className="w-12 h-12 animate-glow-pulse object-fill"
               />
               <h1 className="text-2xl font-bold glow-purple">PRIZMANIA</h1>
             </div>
