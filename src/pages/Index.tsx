@@ -19,7 +19,7 @@ const Index = () => {
 
   const rewardMap: Record<number, Record<number, number>> = {
     20: { 30: 20, 60: 40, 90: 70, 120: 135, 150: 560, 180: 640 },
-    250: { 30: 250, 60: 500, 90: 875, 120: 1687, 150: 7000, 180: 8000, 210: 9000, 240: 10000 },
+    250: { 30: 288, 60: 354, 90: 480, 120: 625, 150: 715, 180: 810, 210: 2100, 240: 3750, 270: 6750 },
     2000: { 30: 2000 }
   };
 
@@ -369,15 +369,26 @@ const Index = () => {
                               <span className="font-bold">{period.days} дней</span>
                             </Button>
                           ))}
-                          {calcAmount === 250 && [30, 60, 90, 120, 150, 180, 210, 240].map((days) => (
+                          {calcAmount === 250 && [
+                            { days: 30, reward: 288 },
+                            { days: 60, reward: 354 },
+                            { days: 90, reward: 480 },
+                            { days: 120, reward: 625 },
+                            { days: 150, reward: 715 },
+                            { days: 180, reward: 810 },
+                            { days: 210, reward: 2100 },
+                            { days: 240, reward: 3750 },
+                            { days: 270, reward: 6750, gold: true }
+                          ].map((period) => (
                             <Button
-                              key={days}
-                              variant={calcDays === days ? "default" : "outline"}
-                              onClick={() => setCalcDays(days)}
-                              className={calcDays === days ? "neon-border bg-secondary" : "border-secondary/30"}
+                              key={period.days}
+                              variant={calcDays === period.days ? "default" : "outline"}
+                              onClick={() => setCalcDays(period.days)}
+                              className={`${calcDays === period.days ? "neon-border bg-secondary" : "border-secondary/30"} ${period.gold ? "border-accent/70 bg-accent/10" : ""} relative`}
                               size="sm"
                             >
-                              {days} дней
+                              {period.gold && <Icon name="Crown" size={12} className="text-accent absolute top-1 right-1" />}
+                              <span className="font-bold">{period.days} дней</span>
                             </Button>
                           ))}
                           {calcAmount === 2000 && (
