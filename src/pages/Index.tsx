@@ -422,7 +422,7 @@ const Index = () => {
                       
                       <div className="pt-4 border-t border-primary/20">
                         <div className="text-xs text-muted-foreground mb-1">Гарантированный минимум</div>
-                        <div className="text-2xl font-bold text-primary">26$</div>
+                        <div className="text-2xl font-bold text-primary">${calcAmount === 250 ? '288' : calcAmount}</div>
                         <div className="text-xs text-green-500 mt-1 flex items-center justify-center gap-1">
                           <Icon name="ShieldCheck" size={12} />
                           100% защита вклада
@@ -448,13 +448,13 @@ const Index = () => {
                       <Icon name="Crown" size={40} className="text-accent animate-bounce" />
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold glow-cyan mb-2">
-                      Максимальная награда первой игры
+                      {calcAmount === 20 ? 'Максимальная награда первой игры' : calcAmount === 250 ? 'Максимальная награда второй игры' : 'Третья игра'}
                     </h3>
                     <div className="text-5xl md:text-6xl font-bold glow-purple">
-                      1920$
+                      {calcAmount === 20 ? '1920$' : calcAmount === 250 ? '12,360$' : '45,000$'}
                     </div>
                     <p className="text-sm text-muted-foreground mt-4">
-                      Пройди все ступени и получи максимальную награду
+                      {calcAmount === 20 ? 'Пройди все ступени и получи максимальную награду' : calcAmount === 250 ? 'Получи доступ к третьей игре после прохождения золотой ступени' : 'Доступна после прохождения золотых ступеней первой и второй игры'}
                     </p>
                   </div>
                 </div>
