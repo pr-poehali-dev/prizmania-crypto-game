@@ -71,7 +71,7 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="https://cdn.poehali.dev/files/fcc3ce6e-7b1d-43e7-98f2-81cd0e45d3f0.png" 
+                src="https://cdn.poehali.dev/files/740117d8-7e9c-4d11-88c4-0dbe433fc586.jpeg" 
                 alt="Prizm Logo" 
                 className="w-12 h-12 animate-glow-pulse"
               />
