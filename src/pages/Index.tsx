@@ -346,12 +346,11 @@ const Index = () => {
                               key={period.days}
                               variant={calcDays === period.days ? "default" : "outline"}
                               onClick={() => setCalcDays(period.days)}
-                              className={`${calcDays === period.days ? "neon-border bg-secondary" : "border-secondary/30"} ${period.gold ? "border-accent/70 bg-accent/10" : ""} relative flex flex-col h-auto py-2`}
+                              className={`${calcDays === period.days ? "neon-border bg-secondary" : "border-secondary/30"} ${period.gold ? "border-accent/70 bg-accent/10" : ""} relative`}
                               size="sm"
                             >
                               {period.gold && <Icon name="Crown" size={12} className="text-accent absolute top-1 right-1" />}
                               <span className="font-bold">{period.days} дней</span>
-                              <span className="text-xs text-muted-foreground">${period.reward}</span>
                             </Button>
                           ))}
                           {calcAmount === 250 && [30, 60, 90, 120, 150, 180, 210, 240].map((days) => (
