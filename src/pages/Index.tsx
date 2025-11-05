@@ -180,7 +180,7 @@ const Index = () => {
             {[
               { icon: 'TrendingUp', title: 'Невозможно проиграть', desc: 'Игровая механика распределяет награды по принципу децентрализации, баланс фонда более 65 млн монет', color: 'primary' },
               { icon: 'Wallet', title: 'Прямая интеграция', desc: 'Криптокошелёк напрямую связан с системой выплат наград, удобный телеграм бот', color: 'secondary' },
-              { icon: 'Calculator', title: 'Математическая точность', desc: 'Прозрачная формула расчёта вознаграждений без скрытых условий', color: 'accent' }
+              { icon: 'Calculator', title: 'Математическая точность', desc: 'Новая экономическая модель, игра вытягивает монеты с рынка, создавая постоянный спрос и "искусственный" дефицит. Трехуровневая система: доход для любого кошелька. Вход от $20.', color: 'accent' }
             ].map((item, i) => (
               <Card key={i} className="p-8 bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all hover:scale-105 animate-fade-in" style={{ animationDelay: `${i * 0.2}s` }}>
                 <div className={`w-16 h-16 rounded-full bg-${item.color}/20 flex items-center justify-center mb-6`}>
