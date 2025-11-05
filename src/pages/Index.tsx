@@ -344,6 +344,17 @@ const Index = () => {
                         <span>Минимум: $20</span>
                         <span>Максимум: $2000</span>
                       </div>
+                      {calcAmount === 2000 && (
+                        <div className="p-4 rounded-lg bg-accent/20 border-2 border-accent/50 animate-fade-in">
+                          <div className="flex items-start gap-3">
+                            <Icon name="Lock" size={20} className="text-accent flex-shrink-0 mt-0.5" />
+                            <div className="text-sm">
+                              <p className="font-bold text-accent mb-1">Доступно только при прохождении</p>
+                              <p className="text-muted-foreground">Пройдите золотые ступени первой и второй игры, чтобы открыть доступ к третьей игре на $2000</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     <div className="space-y-3">
