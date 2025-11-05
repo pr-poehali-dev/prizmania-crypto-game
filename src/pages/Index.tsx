@@ -148,21 +148,6 @@ const Index = () => {
                   <span>100% децентрализация</span>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-4">
-                <Button 
-                  size="lg" 
-                  className="neon-border bg-primary hover:bg-primary/80 text-lg px-8"
-                  onClick={() => walletConnected ? null : setWalletDialogOpen(true)}
-                  disabled={!walletConnected}
-                >
-                  <Icon name="Wallet" className="mr-2" size={20} />
-                  {walletConnected ? 'Начать играть' : 'Подключите кошелёк'}
-                </Button>
-                <Button size="lg" variant="outline" className="border-secondary text-secondary hover:bg-secondary/10 text-lg px-8">
-                  <Icon name="PlayCircle" className="mr-2" size={20} />
-                  Как это работает
-                </Button>
-              </div>
             </div>
             
             <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
