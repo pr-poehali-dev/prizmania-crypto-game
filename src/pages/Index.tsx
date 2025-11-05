@@ -286,7 +286,7 @@ const Index = () => {
               <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div className="space-y-2 animate-fade-in">
                   <div className="text-5xl font-bold glow-purple">100%</div>
-                  <div className="text-muted-foreground">Гарантия выплат</div>
+                  <div className="text-muted-foreground">Криптовалюта, собственный блокчейн</div>
                 </div>
                 <div className="space-y-2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                   <div className="text-5xl font-bold glow-cyan">24/7</div>
