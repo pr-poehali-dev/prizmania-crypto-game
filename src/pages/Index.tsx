@@ -23,18 +23,34 @@ const Index = () => {
     2000: { 30: 2000 }
   };
 
-  const profitPercentMap: Record<number, number> = {
-    30: 30,
-    60: 35,
-    90: 40,
-    120: 50,
-    150: 60,
-    180: 60
+  const profitPercentMap: Record<number, Record<number, number>> = {
+    20: {
+      30: 30,
+      60: 35,
+      90: 40,
+      120: 50,
+      150: 60,
+      180: 60
+    },
+    250: {
+      30: 15,
+      60: 18,
+      90: 20,
+      120: 25,
+      150: 30,
+      180: 35,
+      210: 40,
+      240: 50,
+      270: 50
+    },
+    2000: {
+      30: 0
+    }
   };
 
   const calculateReward = (amount: number, days: number) => {
     const reward = rewardMap[amount]?.[days] || 0;
-    const profitPercent = profitPercentMap[days] || 0;
+    const profitPercent = profitPercentMap[amount]?.[days] || 0;
     return {
       total: amount + reward,
       profit: reward,
