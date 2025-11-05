@@ -131,9 +131,7 @@ const Index = () => {
                 <br />
                 <span className="text-3xl md:text-4xl glow-cyan">everybody wins</span>
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Инновационная крипто-игра, где <span className="text-primary font-semibold">невозможно проиграть</span>. Объединение криптокошелька с математической механикой выплаты наград на базе уникальной технологии Prizm.
-              </p>
+              <p className="text-xl text-muted-foreground">Инновационная крипто-игра, где невозможно проиграть. Объединение криптокошелька с математической механикой выплаты наград на базе блокчейна криптовалюты Prizm.</p>
               <div className="flex flex-wrap gap-4 text-sm">
                 <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30">
                   <Icon name="BadgeCheck" size={16} className="text-primary" />
