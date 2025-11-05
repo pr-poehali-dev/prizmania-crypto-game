@@ -17,14 +17,19 @@ const Index = () => {
   const [calcDays, setCalcDays] = useState(30);
   const { toast } = useToast();
 
+  const rewardMap: Record<number, Record<number, number>> = {
+    20: { 30: 20, 60: 40, 90: 70, 120: 135, 150: 560, 180: 640 },
+    250: { 30: 250, 60: 500, 90: 875, 120: 1687, 150: 7000, 180: 8000, 210: 9000, 240: 10000 },
+    2000: { 30: 2000 }
+  };
+
   const calculateReward = (amount: number, days: number) => {
-    const yearlyRate = 0.12;
-    const dailyRate = yearlyRate / 365;
-    const reward = amount * dailyRate * days;
+    const reward = rewardMap[amount]?.[days] || 0;
     return {
       total: amount + reward,
       profit: reward,
-      guaranteed: amount
+      guaranteed: amount,
+      reward: reward
     };
   };
 
@@ -385,7 +390,7 @@ const Index = () => {
                     <div className="p-6 rounded-xl bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 border-2 border-primary/40 text-center space-y-4 animate-fade-in">
                       <div>
                         <div className="text-sm text-muted-foreground mb-2">Ваша награда через {calcDays} {calcDays === 1 ? 'день' : calcDays < 5 ? 'дня' : 'дней'}</div>
-                        <div className="text-4xl md:text-5xl font-bold glow-purple mb-2">26$</div>
+                        <div className="text-4xl md:text-5xl font-bold glow-purple mb-2">${reward.reward}</div>
                       </div>
                       
                       <div className="text-green-500 font-semibold flex items-center justify-center gap-2 text-lg">
