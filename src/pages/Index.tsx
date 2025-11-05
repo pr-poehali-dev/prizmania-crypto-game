@@ -397,7 +397,10 @@ const Index = () => {
                     </div>
                   </div>
                   
-                  <div className="flex flex-col justify-center">+30% прибыль</div>
+                  <div className="flex flex-col justify-center">
+                    <div className="p-6 rounded-xl bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 border-2 border-primary/40 text-center space-y-4 animate-fade-in">
+                      <div>
+                        <div className="text-sm text-muted-foreground mb-2">Ваша награда через {calcDays} {calcDays === 1 ? 'день' : calcDays < 5 ? 'дня' : 'дней'}</div>
                         <div className="text-4xl md:text-5xl font-bold glow-purple mb-2">${reward.reward}</div>
                       </div>
                       
@@ -408,7 +411,7 @@ const Index = () => {
                       
                       <div className="pt-4 border-t border-primary/20">
                         <div className="text-xs text-muted-foreground mb-1">Гарантированный минимум</div>
-                        <div className="text-2xl font-bold text-primary">26$</div>
+                        <div className="text-2xl font-bold text-primary">${calcAmount}</div>
                         <div className="text-xs text-green-500 mt-1 flex items-center justify-center gap-1">
                           <Icon name="ShieldCheck" size={12} />
                           100% защита вклада
