@@ -23,13 +23,24 @@ const Index = () => {
     2000: { 30: 2000 }
   };
 
+  const profitPercentMap: Record<number, number> = {
+    30: 30,
+    60: 35,
+    90: 40,
+    120: 50,
+    150: 60,
+    180: 60
+  };
+
   const calculateReward = (amount: number, days: number) => {
     const reward = rewardMap[amount]?.[days] || 0;
+    const profitPercent = profitPercentMap[days] || 0;
     return {
       total: amount + reward,
       profit: reward,
       guaranteed: amount,
-      reward: reward
+      reward: reward,
+      profitPercent: profitPercent
     };
   };
 
@@ -395,7 +406,7 @@ const Index = () => {
                       
                       <div className="text-green-500 font-semibold flex items-center justify-center gap-2 text-lg">
                         <Icon name="TrendingUp" size={20} />
-                        +{reward.profit.toFixed(2)} PZM прибыль
+                        +{reward.profitPercent}% прибыль
                       </div>
                       
                       <div className="pt-4 border-t border-primary/20">
