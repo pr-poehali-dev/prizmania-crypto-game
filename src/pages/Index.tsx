@@ -428,22 +428,23 @@ const Index = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20 hover:bg-primary/10 transition-colors cursor-pointer" onClick={() => setCalcDays(7)}>
-                    <div className="text-xs text-muted-foreground mb-1">За 7 дней</div>
-                    <div className="font-bold text-primary">+{(calcAmount * 0.12 / 365 * 7).toFixed(2)} PZM</div>
-                  </div>
-                  <div className="p-3 rounded-lg bg-secondary/5 border border-secondary/20 hover:bg-secondary/10 transition-colors cursor-pointer" onClick={() => setCalcDays(30)}>
-                    <div className="text-xs text-muted-foreground mb-1">За 30 дней</div>
-                    <div className="font-bold text-secondary">+{(calcAmount * 0.12 / 365 * 30).toFixed(2)} PZM</div>
-                  </div>
-                  <div className="p-3 rounded-lg bg-accent/5 border border-accent/20 hover:bg-accent/10 transition-colors cursor-pointer" onClick={() => setCalcDays(90)}>
-                    <div className="text-xs text-muted-foreground mb-1">За 90 дней</div>
-                    <div className="font-bold text-accent">+{(calcAmount * 0.12 / 365 * 90).toFixed(2)} PZM</div>
-                  </div>
-                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20 hover:bg-primary/10 transition-colors cursor-pointer" onClick={() => setCalcDays(365)}>
-                    <div className="text-xs text-muted-foreground mb-1">За 365 дней</div>
-                    <div className="font-bold text-primary">+{(calcAmount * 0.12).toFixed(2)} PZM</div>
+                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-accent/30 via-primary/20 to-secondary/30 border-2 border-primary/40 p-8 text-center animate-fade-in">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10 animate-pulse"></div>
+                  <div className="relative z-10 space-y-4">
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                      <Icon name="Trophy" size={40} className="text-accent animate-bounce" />
+                      <Icon name="Sparkles" size={32} className="text-primary" />
+                      <Icon name="Crown" size={40} className="text-accent animate-bounce" />
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold glow-cyan mb-2">
+                      Максимальная награда первой игры
+                    </h3>
+                    <div className="text-5xl md:text-6xl font-bold glow-purple">
+                      1920$
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-4">
+                      Пройди все ступени и получи максимальную награду
+                    </p>
                   </div>
                 </div>
               </div>
