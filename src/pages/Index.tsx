@@ -350,7 +350,7 @@ const Index = () => {
                               size="sm"
                             >
                               {period.gold && <Icon name="Crown" size={12} className="text-accent absolute top-1 right-1" />}
-                              <span className="font-bold">{period.days}д</span>
+                              <span className="font-bold">{period.days} дней</span>
                               <span className="text-xs text-muted-foreground">${period.reward}</span>
                             </Button>
                           ))}
