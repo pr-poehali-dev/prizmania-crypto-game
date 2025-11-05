@@ -183,6 +183,37 @@ const Index = () => {
               </Card>
             ))}
           </div>
+
+          <div className="mt-20">
+            <h3 className="text-3xl md:text-4xl font-bold text-center mb-12 glow-cyan">Три ступени игры</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { level: '1 ступень', deposit: '$20', reward: '$1,920', icon: 'Star', color: 'primary' },
+                { level: '2 ступень', deposit: '$250', reward: '$12,360', icon: 'Sparkles', color: 'secondary' },
+                { level: '3 ступень', deposit: '$2,000', reward: '$45,000', icon: 'Trophy', color: 'accent' }
+              ].map((step, i) => (
+                <Card key={i} className="p-8 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border-2 border-primary/30 hover:border-primary/70 transition-all hover:scale-105 animate-fade-in" style={{ animationDelay: `${i * 0.15}s` }}>
+                  <div className={`w-20 h-20 rounded-full bg-${step.color}/20 flex items-center justify-center mb-6 mx-auto border-2 border-${step.color}/50`}>
+                    <Icon name={step.icon as any} size={40} className={`text-${step.color}`} />
+                  </div>
+                  <h4 className="text-2xl font-bold text-center mb-6 glow-purple">{step.level}</h4>
+                  <div className="space-y-4 text-center">
+                    <div className="p-4 rounded-lg bg-background/50 border border-primary/20">
+                      <p className="text-sm text-muted-foreground mb-1">Депозит</p>
+                      <p className="text-3xl font-bold text-primary">{step.deposit}</p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Icon name="ArrowDown" size={24} className="text-accent animate-bounce" />
+                    </div>
+                    <div className="p-4 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 border border-accent/40 neon-border-cyan">
+                      <p className="text-sm text-muted-foreground mb-1">Награда</p>
+                      <p className="text-4xl font-bold glow-cyan">{step.reward}</p>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
