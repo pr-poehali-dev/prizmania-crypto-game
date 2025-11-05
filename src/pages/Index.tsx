@@ -341,7 +341,9 @@ const Index = () => {
                               onClick={() => setCalcDays(days)}
                               className={calcDays === days ? "neon-border bg-secondary" : "border-secondary/30"}
                               size="sm"
-                            >60 дней</Button>
+                            >
+                              {days}д
+                            </Button>
                           ))}
                           {calcAmount === 250 && [30, 60, 90, 120, 150, 180, 210, 240].map((days) => (
                             <Button
