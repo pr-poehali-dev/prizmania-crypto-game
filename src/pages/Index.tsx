@@ -341,9 +341,7 @@ const Index = () => {
                               onClick={() => setCalcDays(days)}
                               className={calcDays === days ? "neon-border bg-secondary" : "border-secondary/30"}
                               size="sm"
-                            >
-                              {days}д
-                            </Button>
+                            >60 дней</Button>
                           ))}
                           {calcAmount === 250 && [30, 60, 90, 120, 150, 180, 210, 240].map((days) => (
                             <Button
@@ -377,7 +375,7 @@ const Index = () => {
                     <div className="p-6 rounded-xl bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 border-2 border-primary/40 text-center space-y-4 animate-fade-in">
                       <div>
                         <div className="text-sm text-muted-foreground mb-2">Ваша награда через {calcDays} {calcDays === 1 ? 'день' : calcDays < 5 ? 'дня' : 'дней'}</div>
-                        <div className="text-4xl md:text-5xl font-bold glow-purple mb-2">26$</div>
+                        <div className="text-4xl md:text-5xl font-bold glow-purple mb-2">40$</div>
                       </div>
                       
                       <div className="text-green-500 font-semibold flex items-center justify-center gap-2 text-lg">
