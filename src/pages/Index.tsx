@@ -145,6 +145,10 @@ const Index = () => {
                   <Icon name="Network" size={16} className="text-accent" />
                   <span>100% децентрализация</span>
                 </div>
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/50 glow-purple">
+                  <Icon name="TrendingUp" size={16} className="text-primary" />
+                  <span className="font-bold">x3-x6 к депозиту</span>
+                </div>
               </div>
             </div>
             
