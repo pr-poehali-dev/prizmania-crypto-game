@@ -101,9 +101,14 @@ const Index = () => {
                 </Button>
               </div>
             ) : (
-              <Button className="neon-border bg-primary hover:bg-primary/80" onClick={() => setWalletDialogOpen(true)}>
-                <Icon name="Wallet" size={18} className="mr-2" />
-                Подключить кошелёк
+              <Button 
+                className="neon-border bg-primary hover:bg-primary/80" 
+                asChild
+              >
+                <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer">
+                  <Icon name="Wallet" size={18} className="mr-2" />
+                  Подключить кошелёк
+                </a>
               </Button>
             )}
           </div>
