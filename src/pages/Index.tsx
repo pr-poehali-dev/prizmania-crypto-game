@@ -13,7 +13,7 @@ const Index = () => {
   const [walletDialogOpen, setWalletDialogOpen] = useState(false);
   const [walletConnected, setWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
-  const [calcAmount, setCalcAmount] = useState(1000);
+  const [calcAmount, setCalcAmount] = useState(20);
   const [calcDays, setCalcDays] = useState(30);
   const { toast } = useToast();
 
@@ -286,27 +286,24 @@ const Index = () => {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-6">
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <label className="text-sm font-medium text-muted-foreground">Сумма вклада (PZM)</label>
-                        <Input 
-                          type="number" 
-                          value={calcAmount} 
-                          onChange={(e) => setCalcAmount(Math.max(100, parseInt(e.target.value) || 100))}
-                          className="w-32 text-right"
-                          min="100"
-                        />
+                      <div className="flex flex-col gap-2">
+                        <label className="text-sm font-medium text-muted-foreground">Выберите сумму вклада</label>
+                        <div className="grid grid-cols-3 gap-3">
+                          {[20, 250, 2000].map((amount) => (
+                            <Button
+                              key={amount}
+                              variant={calcAmount === amount ? "default" : "outline"}
+                              onClick={() => setCalcAmount(amount)}
+                              className={calcAmount === amount ? "neon-border bg-primary" : "border-primary/30"}
+                            >
+                              ${amount}
+                            </Button>
+                          ))}
+                        </div>
                       </div>
-                      <Slider 
-                        value={[calcAmount]} 
-                        onValueChange={(value) => setCalcAmount(value[0])}
-                        min={100}
-                        max={100000}
-                        step={100}
-                        className="w-full"
-                      />
                       <div className="flex justify-between text-xs text-muted-foreground">
-                        <span>100 PZM</span>
-                        <span>100,000 PZM</span>
+                        <span>Минимум: $20</span>
+                        <span>Максимум: $2000</span>
                       </div>
                     </div>
 
