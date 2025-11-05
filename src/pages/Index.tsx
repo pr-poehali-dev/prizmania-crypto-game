@@ -413,9 +413,7 @@ const Index = () => {
                 <div className="p-4 rounded-lg bg-card/80 border border-border">
                   <div className="flex items-start gap-3">
                     <Icon name="Calculator" className="text-primary flex-shrink-0 mt-1" size={20} />
-                    <div className="text-sm text-muted-foreground">
-                      <span className="font-semibold text-foreground">Формула расчёта:</span> Доход = Вклад × (12% / 365) × Количество дней. Ваш вклад остаётся защищённым — вы можете вывести его в любой момент вместе с накопленными наградами.
-                    </div>
+                    <div className="text-sm text-muted-foreground">Формула расчёта: Покупка ступеней производится в криптовалюте и требует дополнительного пополнения на начальных ступенях. Со временем перекрывается прибылью с последующих ступеней.</div>
                   </div>
                 </div>
 
