@@ -154,7 +154,7 @@ const Index = () => {
             
             <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <img 
-                src="https://cdn.poehali.dev/files/c4cd7f7a-fff3-429e-bc1a-5b7728cefedf.png" 
+                src="https://cdn.poehali.dev/files/b99e101a-7985-4b8e-906a-0d2e9cd057d4.jpg" 
                 alt="Prizmania Hero" 
                 className="rounded-2xl neon-border-cyan"
               />
