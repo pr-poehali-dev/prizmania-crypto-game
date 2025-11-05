@@ -377,7 +377,7 @@ const Index = () => {
                               className={calcDays === days ? "neon-border bg-secondary" : "border-secondary/30"}
                               size="sm"
                             >
-                              {days}д
+                              {days} дней
                             </Button>
                           ))}
                           {calcAmount === 2000 && (
