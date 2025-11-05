@@ -174,7 +174,7 @@ const Index = () => {
       <section id="игра" className="py-24 relative">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 glow-purple">Игра, где невозможно проиграть</h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">Криптокошелёк + математическая механика = гарантированные награды</p>
+          <p className="text-center text-muted-foreground mb-16 text-lg">Криптокошелёк + математическая механика выплат = реальные награды</p>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
