@@ -333,16 +333,25 @@ const Index = () => {
                     <div className="space-y-3">
                       <div className="flex flex-col gap-2">
                         <label className="text-sm font-medium text-muted-foreground">Выберите период</label>
-                        <div className="grid grid-cols-3 gap-2">
-                          {calcAmount === 20 && [30, 60, 90, 120, 150, 180].map((days) => (
+                        <div className="grid grid-cols-2 gap-2">
+                          {calcAmount === 20 && [
+                            { days: 30, reward: 20 },
+                            { days: 60, reward: 40 },
+                            { days: 90, reward: 70 },
+                            { days: 120, reward: 135 },
+                            { days: 150, reward: 560 },
+                            { days: 180, reward: 640, gold: true }
+                          ].map((period) => (
                             <Button
-                              key={days}
-                              variant={calcDays === days ? "default" : "outline"}
-                              onClick={() => setCalcDays(days)}
-                              className={calcDays === days ? "neon-border bg-secondary" : "border-secondary/30"}
+                              key={period.days}
+                              variant={calcDays === period.days ? "default" : "outline"}
+                              onClick={() => setCalcDays(period.days)}
+                              className={`${calcDays === period.days ? "neon-border bg-secondary" : "border-secondary/30"} ${period.gold ? "border-accent/70 bg-accent/10" : ""} relative flex flex-col h-auto py-2`}
                               size="sm"
                             >
-                              {days}д
+                              {period.gold && <Icon name="Crown" size={12} className="text-accent absolute top-1 right-1" />}
+                              <span className="font-bold">{period.days}д</span>
+                              <span className="text-xs text-muted-foreground">${period.reward}</span>
                             </Button>
                           ))}
                           {calcAmount === 250 && [30, 60, 90, 120, 150, 180, 210, 240].map((days) => (
