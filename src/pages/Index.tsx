@@ -411,7 +411,7 @@ const Index = () => {
                       
                       <div className="pt-4 border-t border-primary/20">
                         <div className="text-xs text-muted-foreground mb-1">Гарантированный минимум</div>
-                        <div className="text-2xl font-bold text-primary">${calcAmount}</div>
+                        <div className="text-2xl font-bold text-primary">26$</div>
                         <div className="text-xs text-green-500 mt-1 flex items-center justify-center gap-1">
                           <Icon name="ShieldCheck" size={12} />
                           100% защита вклада
