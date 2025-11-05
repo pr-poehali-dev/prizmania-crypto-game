@@ -154,7 +154,7 @@ const Index = () => {
             
             <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <img 
-                src="https://cdn.poehali.dev/files/a6e0ac84-bb53-4cba-bfc8-f8c99254aa4c.jpg" 
+                src="https://cdn.poehali.dev/files/c4cd7f7a-fff3-429e-bc1a-5b7728cefedf.png" 
                 alt="Prizmania Hero" 
                 className="rounded-2xl neon-border-cyan"
               />
@@ -331,27 +331,39 @@ const Index = () => {
                     </div>
 
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <label className="text-sm font-medium text-muted-foreground">Период (дней)</label>
-                        <Input 
-                          type="number" 
-                          value={calcDays} 
-                          onChange={(e) => setCalcDays(Math.max(1, parseInt(e.target.value) || 1))}
-                          className="w-32 text-right"
-                          min="1"
-                        />
-                      </div>
-                      <Slider 
-                        value={[calcDays]} 
-                        onValueChange={(value) => setCalcDays(value[0])}
-                        min={1}
-                        max={365}
-                        step={1}
-                        className="w-full"
-                      />
-                      <div className="flex justify-between text-xs text-muted-foreground">
-                        <span>1 день</span>
-                        <span>365 дней</span>
+                      <div className="flex flex-col gap-2">
+                        <label className="text-sm font-medium text-muted-foreground">Выберите период</label>
+                        <div className="grid grid-cols-3 gap-2">
+                          {calcAmount === 20 && [30, 60, 90, 120, 150, 180].map((days) => (
+                            <Button
+                              key={days}
+                              variant={calcDays === days ? "default" : "outline"}
+                              onClick={() => setCalcDays(days)}
+                              className={calcDays === days ? "neon-border bg-secondary" : "border-secondary/30"}
+                              size="sm"
+                            >
+                              {days}д
+                            </Button>
+                          ))}
+                          {calcAmount === 250 && [30, 60, 90, 120, 150, 180, 210, 240].map((days) => (
+                            <Button
+                              key={days}
+                              variant={calcDays === days ? "default" : "outline"}
+                              onClick={() => setCalcDays(days)}
+                              className={calcDays === days ? "neon-border bg-secondary" : "border-secondary/30"}
+                              size="sm"
+                            >
+                              {days}д
+                            </Button>
+                          ))}
+                          {calcAmount === 2000 && (
+                            <div className="col-span-3 text-center p-4 rounded-lg bg-accent/20 border-2 border-accent/50">
+                              <Icon name="Crown" size={32} className="text-accent mx-auto mb-2" />
+                              <p className="text-sm font-bold glow-cyan">Золотая ступень</p>
+                              <p className="text-xs text-muted-foreground mt-1">Эксклюзивные условия</p>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
 
