@@ -306,9 +306,9 @@ const Index = () => {
               >
                 <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
                   <img 
-                    src="https://cdn.poehali.dev/files/9469defc-7489-47b1-b946-088177f7072c.jpeg" 
+                    src="https://cdn.poehali.dev/files/1be8e4b6-2792-4e26-a67d-de9baff70d47.png" 
                     alt="Prizm Logo" 
-                    className="w-10 h-10 object-contain brightness-0 invert"
+                    className="w-10 h-10 object-contain"
                   />
                   <span className="uppercase tracking-wide">Инвестировать</span>
                   <Icon name="ArrowRight" size={24} className="group-hover:translate-x-1 transition-transform" />
