@@ -606,13 +606,13 @@ const Index = () => {
           <div className="max-w-2xl mx-auto">
             <Card className="p-8 bg-card/50 backdrop-blur-sm border-primary/30">
               <div className="grid gap-6">
-                <a href="mailto:info@prizmania.com" className="flex items-center gap-4 p-4 rounded-lg hover:bg-primary/10 transition-colors group">
+                <a href="mailto:prizmsetup@gmail.com" className="flex items-center gap-4 p-4 rounded-lg hover:bg-primary/10 transition-colors group">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                     <Icon name="Mail" size={24} className="text-primary" />
                   </div>
                   <div>
                     <div className="font-semibold">Email</div>
-                    <div className="text-muted-foreground">info@prizmania.com</div>
+                    <div className="text-muted-foreground">prizmsetup@gmail.com</div>
                   </div>
                 </a>
                 
