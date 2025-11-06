@@ -16,7 +16,9 @@ const Index = () => {
   const [calcAmount, setCalcAmount] = useState(20);
   const [calcDays, setCalcDays] = useState(30);
   const [prizmMenuOpen, setPrizmMenuOpen] = useState(false);
+  const [exchangeMenuOpen, setExchangeMenuOpen] = useState(false);
   const prizmMenuRef = useRef<HTMLDivElement>(null);
+  const exchangeMenuRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   const rewardMap: Record<number, Record<number, number>> = {
@@ -103,6 +105,9 @@ const Index = () => {
       if (prizmMenuRef.current && !prizmMenuRef.current.contains(event.target as Node)) {
         setPrizmMenuOpen(false);
       }
+      if (exchangeMenuRef.current && !exchangeMenuRef.current.contains(event.target as Node)) {
+        setExchangeMenuOpen(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -115,6 +120,12 @@ const Index = () => {
     { name: 'GitHub Prizm для холодных кошельков и нод', url: 'https://github.com/prizmspace/PrizmCore' },
     { name: 'Блокчейн', url: 'https://blockchain.prizm.vip/' },
     { name: 'Whitepaper - Белая книга', url: 'https://tech.prizm.vip/files/prizm_wp_ru.pdf' },
+  ];
+
+  const exchangeLinks = [
+    { name: 'RuDex', url: 'https://rudex.org/' },
+    { name: 'ProBit', url: 'https://www.probit.com/ru-ru/' },
+    { name: 'PrizmEx', url: 'https://prizmex.ru/' },
   ];
 
   return (
@@ -159,6 +170,55 @@ const Index = () => {
                         </div>
                       </a>
                     ))}
+                  </div>
+                )}
+              </div>
+              <div 
+                ref={exchangeMenuRef}
+                className="relative"
+                onMouseEnter={() => setExchangeMenuOpen(true)}
+                onMouseLeave={() => setExchangeMenuOpen(false)}
+              >
+                <button
+                  className="text-sm font-medium hover:text-primary transition-colors relative group"
+                >
+                  Биржа
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </button>
+                {exchangeMenuOpen && (
+                  <div className="absolute top-full left-0 mt-1 w-64 bg-card/95 backdrop-blur-md border border-secondary/30 rounded-lg shadow-2xl py-2 animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden">
+                    <div className="absolute inset-0 pointer-events-none">
+                      {[...Array(8)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute text-2xl animate-float opacity-60"
+                          style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            animationDelay: `${Math.random() * 2}s`,
+                            animationDuration: `${2 + Math.random() * 2}s`
+                          }}
+                        >
+                          💵
+                        </div>
+                      ))}
+                    </div>
+                    <div className="relative z-10">
+                      {exchangeLinks.map((link, index) => (
+                        <a
+                          key={index}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-4 py-3 text-sm hover:bg-secondary/10 transition-colors border-b border-border/30 last:border-0"
+                        >
+                          <div className="flex items-center gap-2">
+                            <Icon name="TrendingUp" size={16} className="text-secondary flex-shrink-0" />
+                            <span>{link.name}</span>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
