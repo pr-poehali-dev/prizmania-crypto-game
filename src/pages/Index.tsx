@@ -496,34 +496,43 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 glow-purple">Патенты и регистрация</h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">Единственная зарегистрированная криптовалюта в Роспатенте РФ</p>
           
-          <div className="max-w-3xl mx-auto">
-            <Card className="p-8 bg-card/50 backdrop-blur-sm border-primary/30">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <img 
-                  src="https://cdn.poehali.dev/files/2901209f-d627-4d9a-aab3-96852d6c101e.jpeg" 
-                  alt="Роспатент" 
-                  className="w-full md:w-1/2 rounded-xl"
-                />
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <Icon name="Award" className="text-primary flex-shrink-0" size={24} />
+          <div className="max-w-5xl mx-auto">
+            <Card className="p-0 bg-gradient-to-br from-primary/20 via-card/50 to-secondary/20 backdrop-blur-sm border-2 border-primary/40 overflow-hidden">
+              <div className="flex flex-col md:flex-row items-center">
+                <div className="w-full md:w-1/2 relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                  <img 
+                    src="https://cdn.poehali.dev/files/baa6c14f-7c9e-4667-a4c1-790d63b85435.png" 
+                    alt="Призмания - Запатентованная крипто-игра" 
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <div className="w-full md:w-1/2 p-8 md:p-10 space-y-6">
+                  <div className="flex items-start gap-4 bg-card/50 p-4 rounded-lg backdrop-blur-sm border border-primary/20 hover:border-primary/50 transition-colors">
+                    <div className="p-2 rounded-full bg-primary/20">
+                      <Icon name="Award" className="text-primary flex-shrink-0" size={28} />
+                    </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-1">Официальная регистрация</h3>
-                      <p className="text-muted-foreground text-sm">Свидетельство Роспатента РФ № 2018662596</p>
+                      <h3 className="font-bold text-xl mb-2 text-primary">Официальная регистрация</h3>
+                      <p className="text-muted-foreground">Свидетельство Роспатента РФ № 2018662596</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Icon name="FileCheck" className="text-secondary flex-shrink-0" size={24} />
+                  <div className="flex items-start gap-4 bg-card/50 p-4 rounded-lg backdrop-blur-sm border border-secondary/20 hover:border-secondary/50 transition-colors">
+                    <div className="p-2 rounded-full bg-secondary/20">
+                      <Icon name="FileCheck" className="text-secondary flex-shrink-0" size={28} />
+                    </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-1">Защита интеллектуальной собственности</h3>
-                      <p className="text-muted-foreground text-sm">Патентная защита уникальных технологий</p>
+                      <h3 className="font-bold text-xl mb-2 text-secondary">Защита интеллектуальной собственности</h3>
+                      <p className="text-muted-foreground">Патентная защита уникальных технологий</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Icon name="ShieldCheck" className="text-accent flex-shrink-0" size={24} />
+                  <div className="flex items-start gap-4 bg-card/50 p-4 rounded-lg backdrop-blur-sm border border-accent/20 hover:border-accent/50 transition-colors">
+                    <div className="p-2 rounded-full bg-accent/20">
+                      <Icon name="ShieldCheck" className="text-accent flex-shrink-0" size={28} />
+                    </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-1">Легальный статус</h3>
-                      <p className="text-muted-foreground text-sm">Соответствие законодательству РФ</p>
+                      <h3 className="font-bold text-xl mb-2 text-accent">Легальный статус</h3>
+                      <p className="text-muted-foreground">Соответствие законодательству РФ</p>
                     </div>
                   </div>
                 </div>
