@@ -616,13 +616,13 @@ const Index = () => {
                   </div>
                 </a>
                 
-                <a href="https://t.me/prizmania" className="flex items-center gap-4 p-4 rounded-lg hover:bg-secondary/10 transition-colors group">
+                <a href="https://t.me/crypt0_sales" className="flex items-center gap-4 p-4 rounded-lg hover:bg-secondary/10 transition-colors group">
                   <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center group-hover:bg-secondary/30 transition-colors">
                     <Icon name="Send" size={24} className="text-secondary" />
                   </div>
                   <div>
                     <div className="font-semibold">Telegram</div>
-                    <div className="text-muted-foreground">@prizmania</div>
+                    <div className="text-muted-foreground">@crypt0_sales</div>
                   </div>
                 </a>
                 
