@@ -211,11 +211,19 @@ const Index = () => {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block px-4 py-3 text-sm hover:bg-secondary/10 transition-colors border-b border-border/30 last:border-0"
+                          className={`block px-4 py-3 text-sm hover:bg-secondary/10 transition-all border-b border-border/30 last:border-0 group ${
+                            link.name === 'P2P бот' ? 'hover:scale-105' : ''
+                          }`}
                         >
                           <div className="flex items-center gap-2">
-                            <Icon name="TrendingUp" size={16} className="text-secondary flex-shrink-0" />
-                            <span>{link.name}</span>
+                            {link.name === 'P2P бот' ? (
+                              <span className="text-base group-hover:animate-pulse">🤖</span>
+                            ) : (
+                              <Icon name="TrendingUp" size={16} className="text-secondary flex-shrink-0" />
+                            )}
+                            <span className={link.name === 'P2P бот' ? 'group-hover:glow-cyan' : ''}>
+                              {link.name}
+                            </span>
                           </div>
                         </a>
                       ))}
