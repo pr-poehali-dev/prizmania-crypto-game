@@ -301,13 +301,17 @@ const Index = () => {
             <div className="mt-16 flex justify-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
               <Button 
                 size="lg"
-                className="relative group px-12 py-8 text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent hover:from-primary/80 hover:via-secondary/80 hover:to-accent/80 neon-border shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-110"
+                className="relative group px-10 py-7 text-xl font-bold bg-primary/90 hover:bg-primary border-2 border-primary/50 hover:border-primary shadow-2xl hover:shadow-primary/60 transition-all duration-300 hover:scale-105 rounded-xl"
                 asChild
               >
-                <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
-                  <Icon name="Play" size={32} className="animate-pulse" />
-                  <span className="glow-purple">ИГРАТЬ СЕЙЧАС</span>
-                  <Icon name="Zap" size={32} className="animate-pulse" />
+                <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                  <img 
+                    src="https://cdn.poehali.dev/files/9469defc-7489-47b1-b946-088177f7072c.jpeg" 
+                    alt="Prizm Logo" 
+                    className="w-10 h-10 object-contain brightness-0 invert"
+                  />
+                  <span className="uppercase tracking-wide">Инвестировать</span>
+                  <Icon name="ArrowRight" size={24} className="group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
             </div>
