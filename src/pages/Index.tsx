@@ -765,13 +765,13 @@ const Index = () => {
                   </div>
                 </a>
                 
-                <a href="#" className="flex items-center gap-4 p-4 rounded-lg hover:bg-accent/10 transition-colors group">
+                <a href="https://prizmania.ru" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-lg hover:bg-accent/10 transition-colors group">
                   <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
                     <Icon name="Globe" size={24} className="text-accent" />
                   </div>
                   <div>
                     <div className="font-semibold">Сайт</div>
-                    <div className="text-muted-foreground">prizmania.com</div>
+                    <div className="text-muted-foreground">prizmania.ru</div>
                   </div>
                 </a>
               </div>
