@@ -297,6 +297,20 @@ const Index = () => {
                 </Card>
               ))}
             </div>
+            
+            <div className="mt-16 flex justify-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <Button 
+                size="lg"
+                className="relative group px-12 py-8 text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent hover:from-primary/80 hover:via-secondary/80 hover:to-accent/80 neon-border shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-110"
+                asChild
+              >
+                <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
+                  <Icon name="Play" size={32} className="animate-pulse" />
+                  <span className="glow-purple">ИГРАТЬ СЕЙЧАС</span>
+                  <Icon name="Zap" size={32} className="animate-pulse" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
