@@ -255,11 +255,12 @@ const Index = () => {
               </div>
             ) : (
               <Button 
+                size="sm"
                 className="neon-border bg-primary hover:bg-primary/80" 
                 asChild
               >
                 <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer">
-                  <Icon name="Wallet" size={18} className="mr-2" />
+                  <Icon name="Wallet" size={16} className="mr-2" />
                   Подключить кошелёк
                 </a>
               </Button>
