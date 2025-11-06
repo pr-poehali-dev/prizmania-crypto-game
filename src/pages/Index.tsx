@@ -154,7 +154,7 @@ const Index = () => {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
                 </button>
                 {prizmMenuOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-80 bg-card/95 backdrop-blur-md border border-primary/30 rounded-lg shadow-2xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="absolute top-full right-0 mt-1 w-80 bg-card/95 backdrop-blur-md border border-primary/30 rounded-lg shadow-2xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
                     {prizmLinks.map((link, index) => (
                       <a
                         key={index}
