@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -15,6 +15,8 @@ const Index = () => {
   const [walletAddress, setWalletAddress] = useState('');
   const [calcAmount, setCalcAmount] = useState(20);
   const [calcDays, setCalcDays] = useState(30);
+  const [prizmMenuOpen, setPrizmMenuOpen] = useState(false);
+  const prizmMenuRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   const rewardMap: Record<number, Record<number, number>> = {
@@ -96,6 +98,25 @@ const Index = () => {
     });
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (prizmMenuRef.current && !prizmMenuRef.current.contains(event.target as Node)) {
+        setPrizmMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const prizmLinks = [
+    { name: 'Online wallet - Онлайн кошелек Prizm', url: 'https://wallet.prizm.vip/' },
+    { name: 'Официальный сайт криптовалюты', url: 'https://pzm.space/' },
+    { name: 'GitHub Prizm для холодных кошельков и нод', url: 'https://github.com/prizmspace/PrizmCore' },
+    { name: 'Блокчейн', url: 'https://blockchain.prizm.vip/' },
+    { name: 'Whitepaper - Белая книга', url: 'https://tech.prizm.vip/files/prizm_wp_ru.pdf' },
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-primary/20">
@@ -120,6 +141,37 @@ const Index = () => {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
                 </button>
               ))}
+              <div 
+                ref={prizmMenuRef}
+                className="relative"
+                onMouseEnter={() => setPrizmMenuOpen(true)}
+                onMouseLeave={() => setPrizmMenuOpen(false)}
+              >
+                <button
+                  className="text-sm font-medium hover:text-primary transition-colors relative group"
+                >
+                  Prizm
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </button>
+                {prizmMenuOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-80 bg-card/95 backdrop-blur-md border border-primary/30 rounded-lg shadow-2xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                    {prizmLinks.map((link, index) => (
+                      <a
+                        key={index}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-3 text-sm hover:bg-primary/10 transition-colors border-b border-border/30 last:border-0"
+                      >
+                        <div className="flex items-center gap-2">
+                          <Icon name="ExternalLink" size={16} className="text-primary flex-shrink-0" />
+                          <span>{link.name}</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
             {walletConnected ? (
               <div className="flex items-center gap-3">
