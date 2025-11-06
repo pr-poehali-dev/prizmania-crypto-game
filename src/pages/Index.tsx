@@ -131,16 +131,6 @@ const Index = () => {
               <h1 className="text-2xl font-bold glow-purple">PRIZMANIA</h1>
             </div>
             <div className="hidden md:flex items-center gap-6">
-              {['Главная', 'Игра', 'Технология', 'Награды', 'Патенты', 'FAQ', 'Контакты'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-sm font-medium hover:text-primary transition-colors relative group"
-                >
-                  {item}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-                </button>
-              ))}
               <div 
                 ref={prizmMenuRef}
                 className="relative"
@@ -154,7 +144,7 @@ const Index = () => {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
                 </button>
                 {prizmMenuOpen && (
-                  <div className="absolute top-full right-0 mt-1 w-80 bg-card/95 backdrop-blur-md border border-primary/30 rounded-lg shadow-2xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="absolute top-full left-0 mt-1 w-80 bg-card/95 backdrop-blur-md border border-primary/30 rounded-lg shadow-2xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
                     {prizmLinks.map((link, index) => (
                       <a
                         key={index}
@@ -172,6 +162,16 @@ const Index = () => {
                   </div>
                 )}
               </div>
+              {['Игра', 'Технология', 'Награды', 'Патенты', 'FAQ', 'Контакты'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className="text-sm font-medium hover:text-primary transition-colors relative group"
+                >
+                  {item}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </button>
+              ))}
             </div>
             {walletConnected ? (
               <div className="flex items-center gap-3">
