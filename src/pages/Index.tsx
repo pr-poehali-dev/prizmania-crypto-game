@@ -126,6 +126,7 @@ const Index = () => {
     { name: 'RuDex', url: 'https://rudex.org/' },
     { name: 'ProBit', url: 'https://www.probit.com/ru-ru/' },
     { name: 'PrizmEx', url: 'https://prizmex.ru/' },
+    { name: 'P2P бот', url: 'https://t.me/PrizmGroup_bot' },
   ];
 
   return (
