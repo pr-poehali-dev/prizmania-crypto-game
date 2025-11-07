@@ -243,25 +243,27 @@ const Index = () => {
               ))}
             </div>
             {walletConnected ? (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 md:gap-3">
                 <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/20 border border-primary/30">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                   <span className="text-sm font-mono">{walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}</span>
                 </div>
-                <Button size="sm" variant="outline" onClick={disconnectWallet} className="border-primary/30">
-                  <Icon name="LogOut" size={16} className="mr-2" />
-                  Отключить
+                <Button size="sm" variant="outline" onClick={disconnectWallet} className="border-primary/30 text-xs md:text-sm px-2 md:px-4">
+                  <Icon name="LogOut" size={14} className="mr-1 md:mr-2" />
+                  <span className="hidden md:inline">Отключить</span>
+                  <span className="md:hidden">Выйти</span>
                 </Button>
               </div>
             ) : (
               <Button 
                 size="sm"
-                className="neon-border bg-primary hover:bg-primary/80 text-xs px-3 py-1.5 h-8" 
+                className="neon-border bg-primary hover:bg-primary/80 text-xs px-2 md:px-3 py-1.5 h-8" 
                 asChild
               >
                 <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer">
-                  <Icon name="Wallet" size={14} className="mr-1.5" />
-                  Подключить
+                  <Icon name="Wallet" size={14} className="mr-1 md:mr-1.5" />
+                  <span className="hidden md:inline">Подключить</span>
+                  <span className="md:hidden">Войти</span>
                 </a>
               </Button>
             )}
