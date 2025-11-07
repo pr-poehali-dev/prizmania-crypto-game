@@ -17,6 +17,7 @@ const Index = () => {
   const [calcDays, setCalcDays] = useState(30);
   const [prizmMenuOpen, setPrizmMenuOpen] = useState(false);
   const [exchangeMenuOpen, setExchangeMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const prizmMenuRef = useRef<HTMLDivElement>(null);
   const exchangeMenuRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
@@ -68,6 +69,7 @@ const Index = () => {
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
+    setMobileMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -135,6 +137,13 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 hover:bg-primary/10 rounded-lg transition-colors"
+                aria-label="Меню"
+              >
+                <Icon name={mobileMenuOpen ? "X" : "Menu"} size={24} className="text-primary" />
+              </button>
               <img 
                 src="https://cdn.poehali.dev/files/740117d8-7e9c-4d11-88c4-0dbe433fc586.jpeg" 
                 alt="Prizm Logo" 
@@ -270,6 +279,80 @@ const Index = () => {
           </div>
         </div>
       </nav>
+
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setMobileMenuOpen(false)}
+          ></div>
+          <div className="absolute top-[73px] left-0 right-0 bg-card/98 backdrop-blur-lg border-b border-primary/20 shadow-2xl animate-in slide-in-from-top duration-300">
+            <div className="container mx-auto px-4 py-6 max-h-[calc(100vh-73px)] overflow-y-auto">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-sm font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Icon name="Link" size={16} />
+                    Prizm
+                  </h3>
+                  <div className="space-y-2 pl-6">
+                    {prizmLinks.map((link, index) => (
+                      <a
+                        key={index}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-2 text-sm hover:text-primary transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-border/30 pt-6">
+                  <h3 className="text-sm font-semibold text-secondary mb-3 flex items-center gap-2">
+                    <Icon name="TrendingUp" size={16} />
+                    Биржа
+                  </h3>
+                  <div className="space-y-2 pl-6">
+                    {exchangeLinks.map((link, index) => (
+                      <a
+                        key={index}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-2 text-sm hover:text-secondary transition-colors"
+                      >
+                        {link.name === 'P2P бот' ? '🤖 ' : ''}{link.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-border/30 pt-6">
+                  <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                    <Icon name="Navigation" size={16} />
+                    Навигация
+                  </h3>
+                  <div className="space-y-2 pl-6">
+                    {['Игра', 'Технология', 'Награды', 'Патенты', 'FAQ', 'Контакты'].map((item) => (
+                      <button
+                        key={item}
+                        onClick={() => scrollToSection(item.toLowerCase())}
+                        className="block w-full text-left py-2 text-sm hover:text-primary transition-colors"
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <section id="главная" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20"></div>
