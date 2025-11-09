@@ -271,8 +271,7 @@ const Index = () => {
               >
                 <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer">
                   <Icon name="Wallet" size={14} className="mr-1 md:mr-1.5" />
-                  <span className="hidden md:inline">Подключить</span>
-                  <span className="md:hidden">Войти</span>
+                  <span>Подключить кошелек</span>
                 </a>
               </Button>
             )}
@@ -354,7 +353,7 @@ const Index = () => {
         </div>
       )}
 
-      <section id="главная" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+      <section id="главная" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-32 pb-12">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20"></div>
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-64 h-64 bg-primary/30 rounded-full blur-3xl animate-float"></div>
@@ -389,6 +388,16 @@ const Index = () => {
                   <span className="font-bold">x3-x6 к депозиту</span>
                 </div>
               </div>
+              <Button 
+                size="lg"
+                className="neon-border bg-primary hover:bg-primary/80 text-base font-semibold px-8 py-6 mt-6" 
+                asChild
+              >
+                <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer">
+                  <Icon name="Wallet" size={20} className="mr-2" />
+                  Подключить кошелек
+                </a>
+              </Button>
             </div>
             
             <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
