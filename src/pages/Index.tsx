@@ -263,18 +263,7 @@ const Index = () => {
                   <span className="md:hidden">Выйти</span>
                 </Button>
               </div>
-            ) : (
-              <Button 
-                size="sm"
-                className="neon-border bg-primary hover:bg-primary/80 text-xs px-2 md:px-3 py-1.5 h-8" 
-                asChild
-              >
-                <a href="https://t.me/PrizmaniaBot?start=rf1j94naat" target="_blank" rel="noopener noreferrer">
-                  <Icon name="Wallet" size={14} className="mr-1 md:mr-1.5" />
-                  <span>Подключить кошелек</span>
-                </a>
-              </Button>
-            )}
+            ) : null}
           </div>
         </div>
       </nav>
